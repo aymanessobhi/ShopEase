@@ -6,7 +6,7 @@ import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @Entity
-@Table(name = "PL_USER")
+@Table(name = "SW_USER")
 public class User extends Base<User> implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,11 +34,6 @@ public class User extends Base<User> implements UserDetails {
             inverseJoinColumns = {
                     @JoinColumn(name = "ROLE_ID") })
     private Set<Role> roles;
-
-    @OneToMany(mappedBy = "user")
-    Set<Planteur> planteurs = new HashSet<>();
-    @OneToMany(mappedBy = "user")
-    Set<Plantation> plantations = new HashSet<>();
 
 
     public User() { }
