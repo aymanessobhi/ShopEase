@@ -22,7 +22,5 @@ public class DataDto {
     List<DataRef> units;
     List<DataRef> countries;
 
-
-
 }
 
