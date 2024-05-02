@@ -1,8 +1,9 @@
 package com.ideracloud.salewell.service.impl;
 
-import com.ideracloud.geomap.geomapapi.domain.Role;
-import com.ideracloud.geomap.geomapapi.repository.RoleRepository;
-import com.ideracloud.geomap.geomapapi.service.RoleService;
+
+import com.ideracloud.salewell.domain.Role;
+import com.ideracloud.salewell.repository.RoleRepository;
+import com.ideracloud.salewell.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

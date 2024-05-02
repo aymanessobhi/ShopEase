@@ -1,6 +1,4 @@
 package com.ideracloud.salewell.dto;
 
-public interface SearchDto <D> {
-
+public interface SearchDto <D>{
 }
-

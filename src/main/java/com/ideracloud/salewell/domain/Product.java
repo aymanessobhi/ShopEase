@@ -18,8 +18,12 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product extends BaseEntity<Product> {
-	
+public class Product extends Base<Product> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	Category category;
 	
@@ -27,20 +31,22 @@ public class Product extends BaseEntity<Product> {
 	SubCategory subCategory;
 	
 	String title;
-	
+	boolean taxable;
 	String description;
-
+	Double price;
 	String barcode;
 	
-	BigDecimal buyingPrice;
+	BigDecimal costPerItem;
 
-	BigDecimal salePrice;
-
-	BigDecimal comparePrice;
-	
-	Integer availableQty;
-
+	Double profit;
+	Double margin;
+	boolean trackQte;
+	Double weight;
 	String sku;
+	boolean shipping;
+	boolean skuBarcode;
+	Integer quantity;
+
 
 	@Enumerated(EnumType.STRING)
 	Unit unitOfMeasure;
@@ -53,8 +59,5 @@ public class Product extends BaseEntity<Product> {
 	@OrderBy("created_date ASC")
 	@JsonManagedReference
 	Set<ProductImage> images;
-	
-	
-	
 
 }

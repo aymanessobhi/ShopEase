@@ -14,7 +14,11 @@ import jakarta.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubCategoryImage extends BaseEntity<SubCategoryImage>{
+public class SubCategoryImage extends Base<SubCategoryImage>{
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
     String filename;
     String path;
     boolean principle;

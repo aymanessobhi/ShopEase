@@ -16,8 +16,11 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class SubCategory extends BaseEntity<SubCategory> {
-	
+public class SubCategory extends Base<SubCategory> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference

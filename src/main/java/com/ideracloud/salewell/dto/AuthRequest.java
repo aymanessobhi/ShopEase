@@ -1,14 +1,14 @@
 package com.ideracloud.salewell.dto;
 
+import jakarta.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
-
-import javax.validation.constraints.NotNull;
 
 public class AuthRequest {
 
 	private String email;
 
-	@NotNull @Length(min = 5, max = 50)
+	@NotNull
+	@Length(min = 5, max = 50)
 	private String username;
 	
 	@NotNull @Length(min = 5, max = 10)

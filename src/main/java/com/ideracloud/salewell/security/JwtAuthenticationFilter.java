@@ -2,8 +2,14 @@ package com.ideracloud.salewell.security;
 
 
 import io.jsonwebtoken.ExpiredJwtException;
+import jakarta.annotation.Resource;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.lang.NonNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +18,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import javax.annotation.Resource;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
@@ -34,11 +35,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 	@Autowired
 	private TokenProvider jwtTokenUtil;
 
+
+
 	@Override
-	protected void doFilterInternal(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
-		String header = req.getHeader(HEADER_STRING);
+	protected void doFilterInternal(HttpServletRequest request, @NonNull HttpServletResponse response,@NonNull FilterChain filterChain) throws ServletException, IOException {
+
+
+
+
+		String header = request.getHeader(HEADER_STRING);
 		String username = null;
 		String authToken = null;
+
+
+
+
 
 		if (header != null && header.startsWith(TOKEN_PREFIX)) {
 			authToken = header.replace(TOKEN_PREFIX, "");
@@ -59,12 +70,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 			if (jwtTokenUtil.validateToken(authToken, userDetails)) {
 				UsernamePasswordAuthenticationToken authentication = jwtTokenUtil.getAuthenticationToken(authToken, SecurityContextHolder.getContext().getAuthentication(), userDetails);
-				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(req));
+				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				logger.info("User authenticated: " + username + ", setting security context");
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		}
 
-		chain.doFilter(req, res);
+		filterChain.doFilter(request, response);
+
 	}
 }

@@ -15,7 +15,11 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Category extends BaseEntity<Category> {
+public class Category extends Base<Category> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
 
 	String code;
 	String description;

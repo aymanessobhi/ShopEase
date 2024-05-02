@@ -1,8 +1,8 @@
 package com.ideracloud.salewell.controller;
 
-import com.ideracloud.geomap.geomapapi.dto.ApiResponse;
-import com.ideracloud.geomap.geomapapi.dto.DataDto;
-import com.ideracloud.geomap.geomapapi.service.DataService;
+import com.ideracloud.salewell.dto.ApiResponse;
+import com.ideracloud.salewell.dto.DataDto;
+import com.ideracloud.salewell.service.DataService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -19,16 +19,13 @@ public class DataController {
 
     @Autowired
     DataService dataService;
+
     @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_GERANT')")
     @GetMapping("")
     public ApiResponse<DataDto> getData() {
         DataDto data = new DataDto();
-        data.setTotalPFemales(dataService.getTotalPFemales());
-        data.setTotalPlanteurs(dataService.getTotalPlanteurs());
-        data.setTotalUsers(dataService.getTotalUsers());
-        data.setTotalPlantations(dataService.getTotalPlantations());
-        data.setTotalPMales(dataService.getTotalPMales());
-        data.setPlantationTypes(dataService.getPlantationsTypes());
+        data.setAppliesTo(dataService.loadAppliesTo());
+
         return ApiResponse.ok(data);
     }
 }

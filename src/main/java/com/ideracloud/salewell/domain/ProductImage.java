@@ -14,7 +14,11 @@ import jakarta.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductImage extends BaseEntity<ProductImage> {
+public class ProductImage extends Base<ProductImage> {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
+
     String filename;
     String path;
 

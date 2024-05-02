@@ -14,7 +14,11 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SaleOrder extends BaseEntity<SaleOrder> {
+public class SaleOrder extends Base<SaleOrder> {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	Long id;
 
 	@OneToMany(mappedBy = "sale", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	List<SaleOrderLine> lines;

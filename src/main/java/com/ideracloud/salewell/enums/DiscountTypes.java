@@ -6,7 +6,6 @@ public enum DiscountTypes {
 
     String label;
 
-
     DiscountTypes(String s) {
         this.label = s;
     }
