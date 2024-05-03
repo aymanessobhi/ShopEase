@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Location {
+public class Location extends Base<Location>{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,10 +21,11 @@ public class Location {
     @ManyToOne
     @JoinColumn(name = "COUNTRY_ID")
     Country country;
-    String adresse;
-    String appartement;
-    String codePostal;
-    String ville;
-    String telephone;
-
+    String address;
+    String appartment;
+    String postalCode;
+    String city;
+    String phone;
+    boolean fulfillOnlineOrders;
+    boolean posEnabled;
 }
