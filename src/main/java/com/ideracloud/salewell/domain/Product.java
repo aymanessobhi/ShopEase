@@ -56,7 +56,7 @@ public class Product extends Base<Product> {
 
 	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER, orphanRemoval = true)
 	@Column(nullable = true)
-	@OrderBy("created_date ASC")
+	@OrderBy("createdDate ASC")
 	@JsonManagedReference
 	Set<ProductImage> images;
 
