@@ -11,6 +11,5 @@ public class CategoryDto extends BaseDto<CategoryDto> {
 	String code;
 	String description;
 	List<CategoryImageDto> images;
-
 	List<SubCategoryDto> subCategories;
 }
