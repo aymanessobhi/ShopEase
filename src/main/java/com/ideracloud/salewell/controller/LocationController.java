@@ -33,7 +33,7 @@ public class LocationController {
 
     @PostMapping({"create"})
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse create(@RequestBody @Valid LocationCreatDto dto, BindingResult result) {
+    public ApiResponse create(@RequestBody @Valid LocationDto dto, BindingResult result) {
         if (result.hasErrors()) {
             throw new BadRequestException(result, ResourceUtil.getMessage("Invalid request"));
         } else {

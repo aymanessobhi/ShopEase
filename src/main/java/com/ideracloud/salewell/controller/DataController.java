@@ -23,7 +23,7 @@ public class DataController {
     @Autowired
     CountryService countryService;
 
-    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_GERANT')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_AGENT')")
     @GetMapping("")
     public ApiResponse<DataDto> getData() {
         DataDto data = new DataDto();
