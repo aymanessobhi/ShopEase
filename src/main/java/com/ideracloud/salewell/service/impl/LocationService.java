@@ -3,6 +3,7 @@ package com.ideracloud.salewell.service.impl;
 import com.ideracloud.salewell.domain.Country;
 import com.ideracloud.salewell.domain.Location;
 import com.ideracloud.salewell.dto.CategoryDto;
+import com.ideracloud.salewell.dto.LocationCreatDto;
 import com.ideracloud.salewell.dto.LocationDto;
 import com.ideracloud.salewell.exception.DataNotFoundException;
 import com.ideracloud.salewell.mapper.CategoryMapper;
@@ -40,8 +41,9 @@ public class LocationService implements ILocationService {
     }
 
     @Override
-    public LocationDto create(LocationDto dto) {
-        Location entity = mapper.toEntity(dto);
+    public LocationDto create(LocationCreatDto request) {
+        Location entity = mapper.toEntity(request.getDto());
+        entity.setCountry(countryRepository.finfById(request.getId().orElse(null)));
         return mapper.toDto(repository.save(entity));
     }
 

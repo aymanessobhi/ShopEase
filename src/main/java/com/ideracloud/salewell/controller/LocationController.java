@@ -1,10 +1,7 @@
 package com.ideracloud.salewell.controller;
 
 
-import com.ideracloud.salewell.dto.ApiResponse;
-import com.ideracloud.salewell.dto.CategoryDto;
-import com.ideracloud.salewell.dto.LocationDto;
-import com.ideracloud.salewell.dto.ProductDto;
+import com.ideracloud.salewell.dto.*;
 import com.ideracloud.salewell.exception.BadRequestException;
 import com.ideracloud.salewell.service.impl.LocationService;
 import com.ideracloud.salewell.service.impl.ProductService;
@@ -36,7 +33,7 @@ public class LocationController {
 
     @PostMapping({"create"})
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse create(@RequestBody @Valid LocationDto dto, BindingResult result) {
+    public ApiResponse create(@RequestBody @Valid LocationCreatDto dto, BindingResult result) {
         if (result.hasErrors()) {
             throw new BadRequestException(result, ResourceUtil.getMessage("Invalid request"));
         } else {
