@@ -42,8 +42,8 @@ public class LocationService implements ILocationService {
 
     @Override
     public LocationDto create(LocationCreatDto request) {
-        Location entity = mapper.toEntity(request.dto);
-        entity.setCountry(countryRepository.finfById(request.getCountId().orElse(null)));
+        Location entity = mapper.toEntity(request.getDto());
+        entity.setCountry(countryRepository.finfById(request.getId().orElse(null)));
         return mapper.toDto(repository.save(entity));
     }
 
