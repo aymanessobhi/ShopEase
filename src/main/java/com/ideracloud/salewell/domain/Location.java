@@ -28,4 +28,5 @@ public class Location extends Base<Location>{
     String phone;
     boolean fulfillOnlineOrders;
     boolean posEnabled;
+
 }
