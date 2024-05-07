@@ -48,7 +48,8 @@ public class DataServiceImpl implements DataService {
     public List<DataRef> loadDiscountCustomerEligibility() {
         List<DataRef> list = new ArrayList<>();
         list.add(new DataRef(DiscountCustomerEligib.ALL.name(), DiscountCustomerEligib.ALL.getLabel()));
-        list.add(new DataRef(DiscountCustomerEligib.SPECIFIC.name(), DiscountCustomerEligib.SPECIFIC.getLabel()));
+        list.add(new DataRef(DiscountCustomerEligib.SPECIFIC_CUSTOMERS.name(), DiscountCustomerEligib.SPECIFIC_CUSTOMERS.getLabel()));
+        list.add(new DataRef(DiscountCustomerEligib.SPECIFIC_SEGMENTS.name(), DiscountCustomerEligib.SPECIFIC_SEGMENTS.getLabel()));
         return list;
     }
 
