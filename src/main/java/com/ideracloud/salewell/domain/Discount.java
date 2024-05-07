@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Discount extends BaseEntity<Discount> {
+public class Discount extends Base<Discount> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;

@@ -2,7 +2,7 @@ package com.ideracloud.salewell.enums;
 
 public enum DiscountAppliesTo {
 
-    COLLECTIONS("Fixed amount"), PRODUCTS("Percentage");
+    COLLECTIONS("Collections"), PRODUCTS("Products");
 
     String label;
 
