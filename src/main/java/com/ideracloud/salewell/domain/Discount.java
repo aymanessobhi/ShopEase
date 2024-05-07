@@ -22,18 +22,38 @@ public class Discount extends Base<Discount> {
     Long id;
 
     @Enumerated(EnumType.STRING)
-    DiscountTypes type;
+    DiscountTypes discountType;
 
-    String code;
-    String title;
-    Double valuePercentage;
-    Double fixedAmount;
+    @Enumerated(EnumType.STRING)
+    DiscountMethod discountMethod;
+
+    String discountCode;
+    String autoCode;
 
     @Enumerated(EnumType.STRING)
     DiscountValue discountValue;
 
+    Double percentage;
+    Double amount;
     @Enumerated(EnumType.STRING)
-    DiscountAppliesTo appliesTo;
+    DiscountAppliesTo specification;
+    String searchCollections;
+    String searchProducts;
+    boolean oncePerOrder;
+    @Enumerated(EnumType.STRING)
+    DiscountMinPurchase minimumPurchaseRequirement;
+    Double minimumAmountValue;
+    Integer minimumQuantityValue;
+    @Enumerated(EnumType.STRING)
+    DiscountCustomerEligib customerEligibility;
+    String specificSegmentsInput;
+    String specificCustomersInput;
+    boolean limitTotalUsage;
+    String totalUsageLimit;
+    boolean limitPerCustomer;
+    boolean combineWithProductDiscounts;
+    boolean combineWithOrderDiscounts;
+    boolean combineWithShippingDiscounts;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "SW_DISCOUNT_COLLECTION",
@@ -53,26 +73,13 @@ public class Discount extends Base<Discount> {
                     @JoinColumn(name = "PRODUCT_ID") })
     Set<Product> products;
 
-    @Enumerated(EnumType.STRING)
-    DiscountMinPurchase minPurchase;
-
-    Double minAmount;
-
-    Integer minQtyItems;
-
-    @Enumerated(EnumType.STRING)
-    DiscountCustomerEligib customerEligib;
-
-    Integer numberOfTimesUsage;
-
-    boolean oneUsePerCustomer;
-
     @Temporal(TemporalType.TIMESTAMP)
     Date startDate;
+    String startTime;
+    boolean setEndDate;
     @Temporal(TemporalType.TIMESTAMP)
     Date endDate;
-
-    Integer numberOfTimesUsed;
+    String endTime;
 
     @Enumerated(EnumType.STRING)
     DiscountStatus status;
