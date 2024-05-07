@@ -76,7 +76,6 @@ public class Discount extends Base<Discount> {
     @Temporal(TemporalType.TIMESTAMP)
     Date startDate;
     String startTime;
-    boolean setEndDate;
     @Temporal(TemporalType.TIMESTAMP)
     Date endDate;
     String endTime;

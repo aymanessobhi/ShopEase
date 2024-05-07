@@ -37,7 +37,6 @@ public class DiscountDto extends BaseDto<DiscountDto>{
     Set<Long> productIds;
     Date startDate;
     String startTime;
-    boolean setEndDate;
     Date endDate;
     String endTime;
     DiscountStatus status;
