@@ -48,7 +48,6 @@ public class Discount extends Base<Discount> {
     DiscountCustomerEligib customerEligibility;
     String specificSegmentsInput;
     String specificCustomersInput;
-    boolean limitTotalUsage;
     String totalUsageLimit;
     boolean limitPerCustomer;
     boolean combineWithProductDiscounts;
@@ -79,7 +78,6 @@ public class Discount extends Base<Discount> {
     @Temporal(TemporalType.TIMESTAMP)
     Date endDate;
     String endTime;
-
     @Enumerated(EnumType.STRING)
     DiscountStatus status;
 }

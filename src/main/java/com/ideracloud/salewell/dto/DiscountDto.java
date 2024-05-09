@@ -27,7 +27,6 @@ public class DiscountDto extends BaseDto<DiscountDto>{
     DiscountCustomerEligib customerEligibility;
     String specificSegmentsInput;
     String specificCustomersInput;
-    boolean limitTotalUsage;
     String totalUsageLimit;
     boolean limitPerCustomer;
     boolean combineWithProductDiscounts;

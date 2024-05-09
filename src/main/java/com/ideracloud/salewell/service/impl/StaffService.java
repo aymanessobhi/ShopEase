@@ -50,8 +50,8 @@ public class StaffService  implements IStaffService {
                     entity.setName(dto.getName());
                     entity.setAccess(dto.getAccess());
                     entity.setPosRole(dto.getPosRole());
-                    entity.setPostalCode(dto.getPostalCode());
-                    entity.setLocation(dto.getLocation());
+//                    entity.setPostalCode(dto.getPostalCode());
+//                    entity.setLocation(dto.getLocation());
                     
                     return mapper.toDto(repository.save(entity));
                 })
