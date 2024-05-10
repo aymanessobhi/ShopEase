@@ -35,4 +35,26 @@ public class DiscountController {
     public ApiResponse<List<DiscountDto>> getAll() {
         return ApiResponse.ok(service.getAll());
     }
+
+    @GetMapping("find/{id}")
+    public ApiResponse<DiscountDto> findPanneArretById(@PathVariable Long id) {
+        return ApiResponse.ok(service.findDiscountById(id));
+    }
+    @PutMapping("/update")
+    public ApiResponse<DiscountDto> updateDiscount(@RequestBody @Valid DiscountDto dto, BindingResult result){
+        try{
+            return ApiResponse.ok(service.updateDiscount(dto));
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new BadRequestException(result, ResourceUtil.getMessage("Invalid request"));
+        }
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletePanneArret(@PathVariable Long id){
+        service.deleteDiscount(id);
+    }
+
+
+
 }

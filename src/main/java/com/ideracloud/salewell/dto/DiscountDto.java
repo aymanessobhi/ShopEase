@@ -1,6 +1,7 @@
 package com.ideracloud.salewell.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ideracloud.salewell.enums.*;
 import lombok.Data;
 
@@ -32,10 +33,12 @@ public class DiscountDto extends BaseDto<DiscountDto>{
     boolean combineWithProductDiscounts;
     boolean combineWithOrderDiscounts;
     boolean combineWithShippingDiscounts;
-    Set<Long> collectionIds;
-    Set<Long> productIds;
+    //Set<CollectionDto> collection;
+    Set<ProductDto> product;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD")
     Date startDate;
     String startTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "YYYY-MM-DD")
     Date endDate;
     String endTime;
     DiscountStatus status;
